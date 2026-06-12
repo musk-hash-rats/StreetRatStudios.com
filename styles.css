@@ -104,9 +104,7 @@ main,
   width: 44px;
   height: 44px;
   object-fit: contain;
-  border: 1px solid rgba(213, 31, 42, 0.44);
-  background: #020202;
-  box-shadow: 0 0 0 3px rgba(213, 31, 42, 0.08);
+  filter: drop-shadow(0 0 12px rgba(213, 31, 42, 0.22));
 }
 
 .nav-links {
@@ -150,11 +148,10 @@ main,
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid rgba(244, 241, 236, 0.08);
-  box-shadow:
-    18px 18px 0 rgba(213, 31, 42, 0.18),
-    0 28px 70px rgba(0, 0, 0, 0.68);
-  filter: contrast(1.05);
+  filter:
+    contrast(1.06)
+    drop-shadow(12px 12px 0 rgba(213, 31, 42, 0.18))
+    drop-shadow(0 28px 42px rgba(0, 0, 0, 0.62));
 }
 
 .eyebrow,
