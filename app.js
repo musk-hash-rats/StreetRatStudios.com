@@ -131,7 +131,7 @@ function render(time = 0) {
 
 function revealOnScroll() {
   const targets = document.querySelectorAll(
-    ".security-band, .lane, .process-section, .proof-section, .contact-section"
+    ".security-band, .products-section, .product-grid article, .lane, .process-section, .proof-section, .coming-soon-section, .contact-section"
   );
 
   for (const target of targets) {
