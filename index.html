@@ -9,6 +9,7 @@
     />
     <meta name="theme-color" content="#0a0d10" />
     <title>Street Rat Studios | Privacy-First Agent Systems</title>
+    <link rel="preload" href="./assets/street-rat-studios-logo.png" as="image" />
     <link rel="preload" href="./styles.css" as="style" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -17,7 +18,14 @@
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Street Rat Studios home">
-        <span class="brand-icon" aria-hidden="true">SRS</span>
+        <img
+          class="brand-logo"
+          src="./assets/street-rat-studios-logo.png"
+          alt=""
+          width="1254"
+          height="1254"
+          aria-hidden="true"
+        />
         <span>Street Rat Studios</span>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
@@ -33,6 +41,14 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
+          <div class="hero-mark" aria-hidden="true">
+            <img
+              src="./assets/street-rat-studios-logo.png"
+              alt=""
+              width="1254"
+              height="1254"
+            />
+          </div>
           <p class="eyebrow">Private autonomous systems for serious teams</p>
           <h1 id="hero-title">AI agents that help you move faster without handing over the keys.</h1>
           <p class="hero-lede">
@@ -273,7 +289,16 @@
     </main>
 
     <footer class="site-footer">
-      <span>Street Rat Studios</span>
+      <span class="footer-brand">
+        <img
+          src="./assets/street-rat-studios-logo.png"
+          alt=""
+          width="1254"
+          height="1254"
+          aria-hidden="true"
+        />
+        Street Rat Studios
+      </span>
       <span>Privacy-first autonomous systems</span>
     </footer>
 
