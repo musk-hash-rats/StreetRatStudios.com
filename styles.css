@@ -467,6 +467,11 @@ main {
   min-width: 248px;
 }
 
+.contact-actions {
+  display: grid;
+  gap: 12px;
+}
+
 .site-footer {
   justify-content: space-between;
   gap: 16px;
@@ -552,7 +557,8 @@ main {
   }
 
   .hero-actions,
-  .button {
+  .button,
+  .contact-actions {
     width: 100%;
   }
 
