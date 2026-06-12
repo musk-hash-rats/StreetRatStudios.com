@@ -3,13 +3,13 @@ const ctx = canvas.getContext("2d");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const nodes = [
-  { x: 0.14, y: 0.26, r: 3, c: "#d51f2a", vx: 0.00025, vy: 0.00018 },
-  { x: 0.26, y: 0.58, r: 2.4, c: "#f4f1ec", vx: -0.00018, vy: 0.00016 },
-  { x: 0.38, y: 0.34, r: 2.8, c: "#8f1118", vx: 0.00016, vy: -0.00018 },
-  { x: 0.53, y: 0.68, r: 3, c: "#d51f2a", vx: -0.0002, vy: -0.00012 },
-  { x: 0.68, y: 0.3, r: 2.5, c: "#f4f1ec", vx: 0.00018, vy: 0.00013 },
-  { x: 0.82, y: 0.55, r: 3.2, c: "#d51f2a", vx: -0.00016, vy: 0.00015 },
-  { x: 0.9, y: 0.22, r: 2.2, c: "#f4f1ec", vx: 0.00012, vy: -0.00016 },
+  { x: 0.14, y: 0.26, r: 3, c: "#d51f2a", vx: 0.00005, vy: 0.000036 },
+  { x: 0.26, y: 0.58, r: 2.4, c: "#f4f1ec", vx: -0.000036, vy: 0.000032 },
+  { x: 0.38, y: 0.34, r: 2.8, c: "#8f1118", vx: 0.000032, vy: -0.000036 },
+  { x: 0.53, y: 0.68, r: 3, c: "#d51f2a", vx: -0.00004, vy: -0.000024 },
+  { x: 0.68, y: 0.3, r: 2.5, c: "#f4f1ec", vx: 0.000036, vy: 0.000026 },
+  { x: 0.82, y: 0.55, r: 3.2, c: "#d51f2a", vx: -0.000032, vy: 0.00003 },
+  { x: 0.9, y: 0.22, r: 2.2, c: "#f4f1ec", vx: 0.000024, vy: -0.000032 },
 ];
 
 let width = 0;
@@ -66,7 +66,7 @@ function drawConnections() {
         continue;
       }
 
-      ctx.strokeStyle = `rgba(213, 31, 42, ${Math.max(0.035, 0.18 - distance / 2600)})`;
+      ctx.strokeStyle = `rgba(213, 31, 42, ${Math.max(0.018, 0.095 - distance / 4200)})`;
       ctx.beginPath();
       ctx.moveTo(ax, ay);
       ctx.lineTo(bx, by);
@@ -79,13 +79,13 @@ function drawNodes(time) {
   for (const node of nodes) {
     const x = node.x * width;
     const y = node.y * height;
-    const pulse = Math.sin(time / 620 + x * 0.01) * 0.4 + 1;
+    const pulse = Math.sin(time / 1800 + x * 0.006) * 0.16 + 1;
 
     ctx.fillStyle = "rgba(6, 8, 10, 0.75)";
     ctx.strokeStyle = node.c;
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.arc(x, y, node.r * 5.2 * pulse, 0, Math.PI * 2);
+    ctx.arc(x, y, node.r * 3.8 * pulse, 0, Math.PI * 2);
     ctx.fill();
     ctx.stroke();
 
