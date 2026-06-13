@@ -8,8 +8,31 @@
       content="Street Rat Studios builds privacy-first software products, guard tools, websites, apps, and creative media systems for serious operators."
     />
     <meta name="theme-color" content="#0a0d10" />
+    <link rel="canonical" href="https://streetratstudios.com/" />
+    <meta property="og:title" content="Street Rat Studios | Privacy-First Software Products" />
+    <meta
+      property="og:description"
+      content="Guard tools, private apps, secure web builds, and creative media systems built with privacy as a product feature."
+    />
+    <meta property="og:image" content="https://streetratstudios.com/assets/street-rat-studios-social.png" />
+    <meta property="og:url" content="https://streetratstudios.com/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Street Rat Studios | Privacy-First Software Products" />
+    <meta
+      name="twitter:description"
+      content="Guard tools, private apps, secure web builds, and creative media systems built with privacy as a product feature."
+    />
+    <meta name="twitter:image" content="https://streetratstudios.com/assets/street-rat-studios-social.png" />
     <title>Street Rat Studios | Privacy-First Software Products</title>
-    <link rel="preload" href="./assets/street-rat-studios-logo.png" as="image" />
+    <link
+      rel="preload"
+      href="./assets/street-rat-studios-logo-640.webp"
+      as="image"
+      type="image/webp"
+      imagesrcset="./assets/street-rat-studios-logo-320.webp 320w, ./assets/street-rat-studios-logo-640.webp 640w"
+      imagesizes="(max-width: 700px) 164px, 230px"
+    />
     <link rel="preload" href="./styles.css" as="style" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -18,17 +41,20 @@
 
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Street Rat Studios home">
-        <img
-          class="brand-logo"
-          src="./assets/street-rat-studios-logo.png"
-          alt=""
-          width="1254"
-          height="1254"
-          aria-hidden="true"
-        />
+        <picture>
+          <source srcset="./assets/street-rat-studios-logo-96.webp" type="image/webp" />
+          <img
+            class="brand-logo"
+            src="./assets/street-rat-studios-logo.png"
+            alt=""
+            width="96"
+            height="96"
+            aria-hidden="true"
+          />
+        </picture>
         <span>Street Rat Studios</span>
       </a>
-      <nav class="nav-links" aria-label="Primary navigation">
+      <nav class="nav-links desktop-nav" aria-label="Primary navigation">
         <a href="#products">Products</a>
         <a href="#programs">Programs</a>
         <a href="#security">Security</a>
@@ -37,18 +63,38 @@
         <a href="#process">Process</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="header-cta" href="#contact-form">Contact</a>
+      <details class="mobile-nav">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="#products">Products</a>
+          <a href="#programs">Programs</a>
+          <a href="#security">Security</a>
+          <a href="#work">Work</a>
+          <a href="#coming-soon">Coming Soon</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </details>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <div class="hero-mark" aria-hidden="true">
-            <img
-              src="./assets/street-rat-studios-logo.png"
-              alt=""
-              width="1254"
-              height="1254"
-            />
+            <picture>
+              <source
+                srcset="./assets/street-rat-studios-logo-320.webp 320w, ./assets/street-rat-studios-logo-640.webp 640w"
+                sizes="(max-width: 700px) 164px, 230px"
+                type="image/webp"
+              />
+              <img
+                src="./assets/street-rat-studios-logo.png"
+                alt=""
+                width="640"
+                height="640"
+              />
+            </picture>
           </div>
           <p class="eyebrow">Privacy-first software products</p>
           <h1 id="hero-title">Programs that protect the way modern work gets done.</h1>
@@ -59,7 +105,7 @@
             what customers come here to use.
           </p>
           <div class="hero-actions" aria-label="Hero actions">
-            <a class="button primary" href="#products">View our products</a>
+            <a class="button primary" href="#contact-form">Start a project</a>
             <a class="button secondary" href="#contact">Build with us</a>
           </div>
         </div>
@@ -268,11 +314,11 @@
       <section class="proof-section" aria-labelledby="proof-title">
         <div class="proof-copy">
           <div class="section-kicker">Why It Works</div>
-          <h2 id="proof-title">Customers understand products before they understand process.</h2>
+          <h2 id="proof-title">Trust is built into the review path.</h2>
           <p>
-            The front page now leads with what we sell: privacy tools, apps,
-            websites, and media programs. The trust model remains visible because
-            secure software is the point, not a footnote.
+            We do not publish, deploy, email, or hand off irreversible work without
+            a deliberate review point. Every client build gets scoped boundaries,
+            readable change notes, and explicit approval gates.
           </p>
         </div>
         <div class="proof-points" aria-label="Trust signals">
@@ -314,6 +360,24 @@
           </p>
         </div>
         <div class="contact-actions" aria-label="Public contact emails">
+          <form class="contact-form" id="contact-form" action="mailto:biz@streetratstudios.com" method="post" enctype="text/plain">
+            <label>
+              Name or company
+              <input name="name" autocomplete="organization" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              What do you want built?
+              <textarea name="project" rows="4" required></textarea>
+            </label>
+            <button class="button primary" type="submit">Prepare private email</button>
+            <p class="form-note" id="form-status">
+              This form opens your email client. No form data is sent to a third-party service.
+            </p>
+          </form>
           <a class="button primary contact-button" href="mailto:biz@streetratstudios.com">
             biz@streetratstudios.com
           </a>
@@ -326,13 +390,16 @@
 
     <footer class="site-footer">
       <span class="footer-brand">
-        <img
-          src="./assets/street-rat-studios-logo.png"
-          alt=""
-          width="1254"
-          height="1254"
-          aria-hidden="true"
-        />
+        <picture>
+          <source srcset="./assets/street-rat-studios-logo-96.webp" type="image/webp" />
+          <img
+            src="./assets/street-rat-studios-logo.png"
+            alt=""
+            width="96"
+            height="96"
+            aria-hidden="true"
+          />
+        </picture>
         Street Rat Studios
       </span>
       <span>Privacy-first software products</span>

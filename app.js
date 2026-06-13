@@ -1,5 +1,5 @@
 const canvas = document.querySelector("#system-map");
-const ctx = canvas.getContext("2d");
+const ctx = canvas ? canvas.getContext("2d") : null;
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 const nodes = [
@@ -18,6 +18,10 @@ let deviceScale = 1;
 let lastTime = 0;
 
 function resizeCanvas() {
+  if (!canvas || !ctx) {
+    return;
+  }
+
   deviceScale = Math.min(window.devicePixelRatio || 1, 2);
   width = window.innerWidth;
   height = window.innerHeight;
@@ -29,6 +33,10 @@ function resizeCanvas() {
 }
 
 function drawGrid() {
+  if (!ctx) {
+    return;
+  }
+
   ctx.clearRect(0, 0, width, height);
   ctx.lineWidth = 1;
 
@@ -97,7 +105,7 @@ function drawNodes(time) {
 }
 
 function updateNodes(delta) {
-  if (prefersReducedMotion.matches) {
+  if (!shouldAnimateBackground()) {
     return;
   }
 
@@ -116,6 +124,10 @@ function updateNodes(delta) {
 }
 
 function render(time = 0) {
+  if (!ctx) {
+    return;
+  }
+
   const delta = Math.min(time - lastTime, 32);
   lastTime = time;
 
@@ -124,9 +136,14 @@ function render(time = 0) {
   drawConnections();
   drawNodes(time);
 
-  if (!prefersReducedMotion.matches) {
+  if (shouldAnimateBackground()) {
     requestAnimationFrame(render);
   }
+}
+
+function shouldAnimateBackground() {
+  const saveData = navigator.connection && navigator.connection.saveData;
+  return !prefersReducedMotion.matches && !saveData && window.innerWidth >= 700;
 }
 
 function revealOnScroll() {
@@ -136,6 +153,14 @@ function revealOnScroll() {
 
   for (const target of targets) {
     target.classList.add("reveal");
+  }
+
+  if (!("IntersectionObserver" in window)) {
+    for (const target of targets) {
+      target.classList.add("is-visible");
+    }
+
+    return;
   }
 
   const observer = new IntersectionObserver(
@@ -157,12 +182,56 @@ function revealOnScroll() {
   }
 }
 
-window.addEventListener("resize", resizeCanvas, { passive: true });
-resizeCanvas();
-render();
-revealOnScroll();
+function setupContactForm() {
+  const form = document.querySelector("#contact-form");
+  const status = document.querySelector("#form-status");
 
-if (prefersReducedMotion.matches) {
+  if (!form) {
+    return;
+  }
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const name = String(data.get("name") || "").trim();
+    const email = String(data.get("email") || "").trim();
+    const project = String(data.get("project") || "").trim();
+
+    if (!name || !email || !project) {
+      form.reportValidity();
+      return;
+    }
+
+    const subject = `Street Rat Studios project inquiry from ${name}`;
+    const body = [
+      `Name/company: ${name}`,
+      `Email: ${email}`,
+      "",
+      "Project:",
+      project,
+    ].join("\n");
+
+    window.location.href = `mailto:biz@streetratstudios.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    if (status) {
+      status.textContent = "Opening your email client with the project details filled in.";
+    }
+  });
+}
+
+if (ctx) {
+  window.addEventListener("resize", resizeCanvas, { passive: true });
+  resizeCanvas();
+  render();
+}
+
+revealOnScroll();
+setupContactForm();
+
+if (ctx && !shouldAnimateBackground()) {
   drawGrid();
   drawConnections();
   drawNodes(0);
