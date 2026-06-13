@@ -512,8 +512,10 @@ main {
 }
 
 .product-console {
+  position: relative;
   display: grid;
   align-content: end;
+  overflow: hidden;
   min-height: 300px;
   padding: 22px;
   border: 1px solid rgba(244, 241, 236, 0.15);
@@ -521,6 +523,20 @@ main {
     linear-gradient(160deg, rgba(213, 31, 42, 0.22), transparent 46%),
     repeating-linear-gradient(0deg, rgba(244, 241, 236, 0.045) 0 1px, transparent 1px 12px),
     rgba(0, 0, 0, 0.32);
+}
+
+.clipguard-product-mark {
+  position: absolute;
+  top: clamp(28px, 10%, 52px);
+  left: 50%;
+  width: min(180px, 46%);
+  height: auto;
+  object-fit: contain;
+  opacity: 0.96;
+  transform: translateX(-50%);
+  filter:
+    drop-shadow(0 0 18px rgba(43, 196, 188, 0.22))
+    drop-shadow(0 18px 30px rgba(0, 0, 0, 0.38));
 }
 
 .product-console span {
