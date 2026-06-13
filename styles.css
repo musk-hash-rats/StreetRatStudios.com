@@ -338,7 +338,6 @@ dd {
 .products-section,
 .programs-section,
 .lane,
-.process-section,
 .proof-section,
 .coming-soon-section,
 .contact-section {
@@ -419,7 +418,6 @@ main {
 .products-section,
 .programs-section,
 .work-section,
-.process-section,
 .proof-section,
 .coming-soon-section,
 .contact-section {
@@ -429,7 +427,6 @@ main {
 .security-band,
 .products-section,
 .programs-section,
-.process-section,
 .proof-section,
 .coming-soon-section,
 .contact-section {
@@ -577,46 +574,6 @@ main {
     rgba(5, 5, 5, 0.84);
 }
 
-.process-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 0.84fr) minmax(300px, 0.86fr);
-  gap: clamp(24px, 5vw, 70px);
-}
-
-.process-list {
-  display: grid;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.process-list li {
-  position: relative;
-  min-height: 104px;
-  padding: 18px 18px 18px 70px;
-  border: 1px solid rgba(244, 241, 236, 0.13);
-  background: rgba(0, 0, 0, 0.26);
-}
-
-.process-list li::before {
-  position: absolute;
-  top: 18px;
-  left: 18px;
-  color: var(--red);
-  font-weight: 900;
-  content: "0" counter(step);
-  counter-increment: step;
-}
-
-.process-list span {
-  display: block;
-  margin-bottom: 4px;
-  color: var(--ink);
-  font-weight: 900;
-}
-
 .proof-section {
   display: grid;
   grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.72fr);
@@ -759,7 +716,6 @@ main {
   .hero,
   .section-intro,
   .product-hero,
-  .process-layout,
   .proof-section,
   .coming-soon-layout,
   .contact-section {
@@ -852,11 +808,6 @@ main {
   .product-console,
   .release-card {
     min-height: 220px;
-  }
-
-  .process-list li {
-    padding-left: 18px;
-    padding-top: 48px;
   }
 
   .site-footer {

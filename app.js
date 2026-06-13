@@ -148,7 +148,7 @@ function shouldAnimateBackground() {
 
 function revealOnScroll() {
   const targets = document.querySelectorAll(
-    ".products-section, .programs-section, .security-band, .product-grid article, .program-grid article, .lane, .process-section, .proof-section, .coming-soon-section, .contact-section"
+    ".products-section, .programs-section, .security-band, .product-grid article, .program-grid article, .lane, .proof-section, .coming-soon-section, .contact-section"
   );
 
   for (const target of targets) {
