@@ -16,6 +16,7 @@ let width = 0;
 let height = 0;
 let deviceScale = 1;
 let lastTime = 0;
+let animationFrameId = 0;
 
 function resizeCanvas() {
   if (!canvas || !ctx) {
@@ -60,6 +61,10 @@ function drawGrid() {
 }
 
 function drawConnections() {
+  if (!ctx) {
+    return;
+  }
+
   for (let i = 0; i < nodes.length; i += 1) {
     for (let j = i + 1; j < nodes.length; j += 1) {
       const a = nodes[i];
@@ -137,13 +142,36 @@ function render(time = 0) {
   drawNodes(time);
 
   if (shouldAnimateBackground()) {
-    requestAnimationFrame(render);
+    animationFrameId = requestAnimationFrame(render);
   }
 }
 
 function shouldAnimateBackground() {
   const saveData = navigator.connection && navigator.connection.saveData;
-  return !prefersReducedMotion.matches && !saveData && window.innerWidth >= 700;
+  return (
+    !prefersReducedMotion.matches &&
+    !saveData &&
+    window.innerWidth >= 700 &&
+    document.visibilityState === "visible"
+  );
+}
+
+function handleVisibilityChange() {
+  if (!ctx) {
+    return;
+  }
+
+  if (document.hidden) {
+    if (animationFrameId) {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = 0;
+    }
+
+    return;
+  }
+
+  resizeCanvas();
+  render();
 }
 
 function revealOnScroll() {
@@ -224,6 +252,7 @@ function setupContactForm() {
 
 if (ctx) {
   window.addEventListener("resize", resizeCanvas, { passive: true });
+  document.addEventListener("visibilitychange", handleVisibilityChange);
   resizeCanvas();
   render();
 }
