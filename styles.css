@@ -555,6 +555,75 @@ main {
   line-height: 1;
 }
 
+.blackoutguard-showcase {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.62fr);
+  gap: clamp(22px, 4vw, 46px);
+  align-items: center;
+  margin: 0 0 24px;
+  padding: clamp(16px, 3vw, 24px);
+  border: 1px solid rgba(244, 241, 236, 0.14);
+  background:
+    linear-gradient(145deg, rgba(14, 113, 255, 0.12), rgba(213, 31, 42, 0.05)),
+    rgba(0, 0, 0, 0.28);
+}
+
+.blackoutguard-visual {
+  overflow: hidden;
+  border: 1px solid rgba(244, 241, 236, 0.12);
+  background: #02070c;
+}
+
+.blackoutguard-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.blackoutguard-copy {
+  min-width: 0;
+}
+
+.blackoutguard-logo {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 16px 32px rgba(0, 0, 0, 0.34));
+}
+
+.blackoutguard-copy h3 {
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+  line-height: 1;
+}
+
+.feature-list {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--soft);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.feature-list li::before {
+  position: absolute;
+  top: 0.62em;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  background: #0e71ff;
+  content: "";
+  transform: translateY(-50%);
+}
+
 .programs-section {
   border-color: rgba(244, 241, 236, 0.18);
 }
@@ -712,6 +781,7 @@ main {
   .hero,
   .section-intro,
   .product-hero,
+  .blackoutguard-showcase,
   .proof-section,
   .contact-section {
     grid-template-columns: 1fr;

@@ -176,7 +176,7 @@ function handleVisibilityChange() {
 
 function revealOnScroll() {
   const targets = document.querySelectorAll(
-    ".products-section, .programs-section, .security-band, .product-grid article, .program-grid article, .lane, .proof-section, .contact-section"
+    ".products-section, .blackoutguard-showcase, .programs-section, .security-band, .product-grid article, .program-grid article, .lane, .proof-section, .contact-section"
   );
 
   for (const target of targets) {
